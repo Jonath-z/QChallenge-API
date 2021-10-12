@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const cors = require('cors');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, { cors: { origin: "*" } });
 const mongoose = require('mongoose');
@@ -19,12 +20,13 @@ const updateProfileImage = require('./routes/update/userProfileImage.js');
 const updateProfileDetails = require('./routes/update/updateProfileDetails');
 const correct = require('./routes/correct.js');
 
+
 console.log(process.env.PORT);
 
 mongoose.connect(`${process.env.REACT_APP_MONGODB_URL}`, { useNewUrlParser: true, useUnifiedTopology: true });
 const mongodb = mongoose.connection;
 
-
+app.use(cors());
 app.use('/statics', express.static(path.join(__dirname, './src/index.css')));
 app.use('/static', express.static(path.join(__dirname, './public')));
 app.use(express.json());
