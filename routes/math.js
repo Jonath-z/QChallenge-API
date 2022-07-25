@@ -10,7 +10,6 @@
 // mongoose.connect(`${process.env.REACT_APP_MONGODB_URL}`, { useNewUrlParser: true, useUnifiedTopology: true });
 // const mongodb = mongoose.connection;
 
-
 // router.get('/', (req, res) => {
 //     mongodb.collection('math').find({}).toArray((err, data) => {
 //         if (err) {
